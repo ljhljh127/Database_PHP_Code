@@ -109,7 +109,7 @@ if (is_null($userid)) {
                     $P_key = $row[0];
                     $P_name = $row[1];
                 }
-                $sql_2 = "SELECT TO_CHAR(PerformanceStartTime, 'YYYY-MM-DD HH24:MI') from Performance";
+                "SELECT TO_CHAR(PerformanceStartTime, 'YYYY-MM-DD HH24:MI') from Performance where performancekey=$row[0]";
                 $result2 = oci_parse($con, $sql_2);
                 oci_execute($result2);
                 while ($row2 = oci_fetch_array($result2, OCI_NUM)) {
