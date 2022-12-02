@@ -1,0 +1,38 @@
+.signUp{
+  position:relative;
+  margin: 70 auto;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:gray;
+  color:white;
+}
+
+.data p{
+  font-size:25px;
+}
+
+
+.data input,
+.data button {
+  margin: 5px 0;
+  padding: 20px;
+  font-size: 1.3em;
+  border: none;
+}
+
+.data input {
+  margin:auto;
+}
+.data input[type=submit]{
+  width: 600px;
+  background-color: white;
+  color: black;
+}
+
+.data input[type=submit]:hover{background-color: darkorange};
+
+.data .gender label{
+  font-size:25px;
+}

@@ -1,0 +1,33 @@
+
+:root {
+  --padding: 60px;
+}
+.box {
+  position: relative;
+  margin: 50px auto;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--padding);
+  background-color: gray;
+  border-radius: 7px;
+}
+
+.box input,
+.box button {
+  padding: 30px;
+  font-size: 1.3em;
+  border: none;
+}
+.box input {
+  margin-bottom: 25px;
+}
+.box button {
+  background-color:black;
+  color:white;
+  border-radius: 4px;
+}
+
+.box .submit :hover p{background-color: darkorange;}
