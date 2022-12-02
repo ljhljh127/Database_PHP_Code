@@ -105,11 +105,8 @@ if (is_null($userid)) {
             <th>공연료</th>
             </tr>
           ");
-            while ($row = oci_fetch_array($result, OCI_NUM)) { {
-                    $P_key = $row[0];
-                    $P_name = $row[1];
-                }
-                "SELECT TO_CHAR(PerformanceStartTime, 'YYYY-MM-DD HH24:MI') from Performance where performancekey=$row[0]";
+            while ($row = oci_fetch_array($result, OCI_NUM)) {
+                $sql_2 = "SELECT TO_CHAR(PerformanceStartTime, 'YYYY-MM-DD HH24:MI') from Performance where performancekey=$row[0]";
                 $result2 = oci_parse($con, $sql_2);
                 oci_execute($result2);
                 while ($row2 = oci_fetch_array($result2, OCI_NUM)) {
@@ -126,8 +123,8 @@ if (is_null($userid)) {
 
                 echo ("
               <tr> 
-              <td width='100'><p align='center'>{$P_key}</p></td>
-              <td width='100'><p align='center'>{$P_name}</p></td>
+              <td width='100'><p align='center'>{$row[0]}</p></td>
+              <td width='100'><p align='center'>{$row[1]}</p></td>
               <td width='100'><p align='center'>" . $starttime . '~' . $endtime . "</p></td>
               <td width='200'><p align='center'>" . $startdate . $yoil . "</p></td>
               <td width= '100'><p align= 'center'>{$row[3]}</p></td>
