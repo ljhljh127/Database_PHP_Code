@@ -1,0 +1,85 @@
+유저테이블
+Create Table UserTable
+(
+  UserID VARCHAR2(50) NOT NULL,
+  UserPassword VARCHAR2(255) NOT NULL,
+  UserName VARCHAR2(30) NOT NULL,
+  UserSex VARCHAR2(10) NOT NULL,
+  UserBirth DATE NOT NULL,
+  UserPhoneNumber VARCHAR2(50) NOT NULL,
+  PerformanceKey Number(10),
+  PRIMARY KEY(UserID),
+  FOREIGN KEY(PerformanceKey) REFERENCES Performance(PerformanceKey)  ON DELETE SET NULL
+);
+
+drop table usertable;
+
+공연 테이블
+Create Table Performance
+(
+  PerformanceKey Number(10) NOT NULL,
+  PerformanceName VARCHAR2 (255) NOT NULL,
+  PerformanceStartTime DATE NOT NULL,
+  Performancefee VARCHAR2 (50) NOT NULL,
+  PRIMARY KEY(PerformanceKey)
+);
+
+drop table performance;
+공연시간 performance end time - performace date 시간차
+
+강좌 테이블
+Create Table Course
+(
+  CourseKey Number(10) NOT NULL,
+  CourseName VARCHAR2 (255) NOT NULL,
+  CourseStartTime DATE NOT NULL,
+  CourseEndDate DATE NOT NULL,
+  Coursefee VARCHAR2 (50) NOT NULL,
+  TeacherKey Number(10) NOT NULL,
+  PRIMARY KEY(CourseKey),
+  FOREIGN KEY(TeacherKey) REFERENCES Teacher(TeacherKey)  ON DELETE CASCADE
+);
+drop table course;
+
+
+
+강사 테이블
+
+Create Table Teacher
+(
+  TeacherKey Number(10) NOT NULL,
+  TeacherName VARCHAR2(30) NOT NULL,
+  TeacherSex VARCHAR2(10) NOT NULL,
+  TeacherBirth DATE NOT NULL,
+  TeacherPhoneNumber VARCHAR2(50) NOT NULL,
+  PRIMARY KEY(TeacherKey)
+);
+drop table teacher;
+
+
+
+1번유저는 관리자 계정이다.
+관리자 계정은 강좌와 강사를 연결 할 수 있다.
+관리자 계정은 새로운 강좌 및 공연을 추가 및 삭제 할 수 있다.
+
+
+시퀀스함수
+
+CREATE SEQUENCE Performance_SEQ START WITH 1 INCREMENT BY 1 MAXVALUE 9999 NOCYCLE NOCACHE;
+Drop SEQUENCE Performance_SEQ;
+CREATE SEQUENCE Course_SEQ START WITH 1 INCREMENT BY 1 MAXVALUE 9999 NOCYCLE NOCACHE;
+Drop SEQUENCE  Course_SEQ;
+CREATE SEQUENCE Teacher_SEQ START WITH 1 INCREMENT BY 1 MAXVALUE 9999 NOCYCLE NOCACHE;
+Drop SEQUENCE  Teacher_SEQ;
+
+
+insert 구문 작성시 
+insert into usertable VALUES('Performance_SEQ.NextVAL',~);
+로 작성해야한다.
+시퀀스 초기화는 드랍후 재진행(주의 시퀀스 초기화시 유저 테이블 초기화 필요 현재 10000개의 공연 선생님 강좌에 대응)
+
+
+
+
+
+
